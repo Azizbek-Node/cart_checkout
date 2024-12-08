@@ -2,10 +2,12 @@ import React from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useStateValue } from "../../context";
 import { IoCartOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const Products = ({ data }) => {
   const { setWishlist, wishlist, setCount, setCart, cart } = useStateValue();
-
+  const navigate = useNavigate();
+  
   const handleLike = (product) => {
     const isInWishlist = wishlist.some((item) => item.id === product.id);
     if (isInWishlist) {
@@ -20,10 +22,9 @@ const Products = ({ data }) => {
   const handleAddToCart = (product) => {
     if (!cart) {
       console.error("Cart is undefined");
-      setCart(() => [{ ...product, amount: 1 }]); // Cartni bo'sh massiv qilib boshlang
+      setCart(() => [{ ...product, amount: 1 }]);
       return;
     }
-
     const index = cart.findIndex((item) => item.id === product.id);
     if (index < 0) {
       setCart((prev) => [...prev, { ...product, amount: 1 }]);
@@ -35,12 +36,12 @@ const Products = ({ data }) => {
       key={product.id}
       className="shadow-md flex flex-col bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
     >
-      {/* Product Image */}
       <div className="relative h-[200px] bg-gray-100">
         <img
+          onClick={() => navigate(`/product/${product.id}`)}
           className="w-full h-full object-contain"
           src={product.thumbnail}
-          alt={product.title}
+          alt=""
         />
         <button
           onClick={() => handleLike(product)}
@@ -60,7 +61,6 @@ const Products = ({ data }) => {
         </button>
       </div>
 
-      {/* Product Info */}
       <div className="p-5 flex flex-col justify-between flex-1">
         <h3 className="text-lg font-semibold text-gray-800 truncate">
           {product.title}

@@ -6,8 +6,8 @@ import Wishes from "../pages/wishes/Wishes";
 import Checkout from "../pages/checkout/Checkout";
 import Contact from "../pages/contact";
 import Help from "../pages/help/Help";
-import Login from "../pages/login/Login";
 import Cart from "../pages/cart/Cart";
+import Detail from "../pages/detail/Detail";
 
 const Router = () => {
   return (
@@ -19,9 +19,9 @@ const Router = () => {
         <Route path="checkout" element={<Checkout />} />
         <Route path="/wishlist" element={<Wishes />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product/:id" element={<Detail />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-      {/* <Route path="/login" element={<Login />} /> */}
     </Routes>
   );
 };

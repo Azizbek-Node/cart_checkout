@@ -1,5 +1,3 @@
-import { IoIosLogIn } from "react-icons/io";
-
 export const LINKS = [
   {
     id: 1,
@@ -21,26 +19,8 @@ export const LINKS = [
   },
   {
     id: 4,
-    name: "Login",
-    path: "/login",
-    icon: <IoIosLogIn />,
-  },
-  {
-    id: 5,
-    name: "Wishes",
-    path: "/wishes",
-    icon: null,
-  },
-  {
-    id: 6,
     name: "Contact",
     path: "/contact",
-    icon: null,
-  },
-  {
-    id: 7,
-    name: "Cart",
-    path: "/cart",
     icon: null,
   },
 ];
